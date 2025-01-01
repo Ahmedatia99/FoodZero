@@ -2,11 +2,12 @@
 import Link from "../links";
 import { Pages, Routes } from "@/constants/enums";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
 import { Button, buttonVariants } from "../ui/button";
 import { Menu, XIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 function Navbar() {
   const pathname = usePathname();
+  console.log(pathname);
   const links = [
     { id: crypto.randomUUID(), title: "Menu", href: Routes.ROOT },
     { id: crypto.randomUUID(), title: "About", href: Routes.ABOUT },
@@ -33,21 +34,30 @@ function Navbar() {
         </Button>
         <ul
           className={`relative lg:static ${
-            openMenu ? "left-0 z-10" : "-left-full"
-          } top-0 pt-10 py-0 lg:p-0 bg-background lg: transition-all  duration-200 h-[calc(100vh-105px)] lg:h-auto flex-col lg:flex-row w-full lg:w-auto flex items-center gap-10 `}
+            openMenu
+              ? "left-0 z-10 h-[calc(100vh-105px)]"
+              : "-left-full hidden lg:flex"
+          } top-0 pt-10 py-0 lg:p-0 bg-background lg: transition-all  duration-200  lg:h-auto flex-col lg:flex-row w-full lg:w-auto flex items-center gap-10 `}
         >
           {links.map((item) => (
             <li
               key={item.id}
               className={`block relative font-rufina font-bold text-2xl uppercase transition-colors hover:text-primary ${
                 item.onlyMobile ? "lg:hidden" : ""
-              }  ${
-                item.url === pathname.hash
-                  ? "z-2 lg:text-black"
-                  : "lg:text-primary"
               } lg:leading-5 lg:hover:text-primary xl:px-12`}
             >
-              <Link href={item.href}>{item.title}</Link>
+              <Link
+                href={item.href}
+                className={`${
+                  item.href === `${Routes.AUTH}/ ${Pages.LOGIN}`
+                    ? `${buttonVariants({
+                        size: "lg",
+                      })} !px-8 !py-6 !tracking-widest !rounded-full`
+                    : "hover:text-primary duration-200 transition-colors"
+                } `}
+              >
+                {item.title}
+              </Link>
             </li>
           ))}
         </ul>

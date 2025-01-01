@@ -5,8 +5,8 @@ import Image from "next/image";
 
 function index() {
   return (
-    <header>
-      <div className="container lg:flex lg:justify-between border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm py-4 md:py-8 overflow-hidden">
+    <header className="container">
+      <div className=" lg:flex lg:justify-between border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm py-4 md:py-8 overflow-hidden">
         <Link href={Routes.ROOT}>
           <Image
             src="/assets/images/Logo.png"
