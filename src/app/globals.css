@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 body {
-  font-family:  "Rufina","Lato",serif;
+  font-family:  "Rufina",serif;
+  font-family: "Lato",sans-serif;
 }
 
 @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
+    --card: 85 29% 92%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
