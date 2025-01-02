@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { formatCurrency } from "@/lib/formatCurrency.ts";
 import { Checkbox } from "@/components/ui/checkbox";
+
 import {
   Dialog,
   DialogContent,
@@ -14,7 +15,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-const CartDetails = ({ items }) => {
+const CartDetails = ({ items , open }) => {
+
+
   const sizes = [
     {
       id: crypto.randomUUID(),
