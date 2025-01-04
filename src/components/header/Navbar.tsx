@@ -1,10 +1,11 @@
 "use client";
 import Link from "../links";
-import { Pages, Routes } from "@/constants/enums";
+import { Routes } from "@/constants/enums";
 import { useState } from "react";
-import { Button, buttonVariants } from "../ui/button";
+import { Button } from "../ui/button";
 import { Menu, XIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { Login } from "../signin/index";
 function Navbar() {
   const pathname = usePathname();
   console.log(pathname);
@@ -12,11 +13,6 @@ function Navbar() {
     { id: crypto.randomUUID(), title: "Menu", href: Routes.ROOT },
     { id: crypto.randomUUID(), title: "About", href: Routes.ABOUT },
     { id: crypto.randomUUID(), title: "Contact", href: Routes.CONTACT },
-    {
-      id: crypto.randomUUID(),
-      title: "Login",
-      href: `${Routes.AUTH}/ ${Pages.LOGIN}`,
-    },
   ];
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -48,18 +44,15 @@ function Navbar() {
             >
               <Link
                 href={item.href}
-                className={`${
-                  item.href === `${Routes.AUTH}/ ${Pages.LOGIN}`
-                    ? `${buttonVariants({
-                        size: "lg",
-                      })} !px-8 !py-6 !tracking-widest !rounded-full`
-                    : "hover:text-primary duration-200 transition-colors"
-                } `}
+                className={`
+                   !px-8 !py-6 !tracking-widest !rounded-full
+                    hover:text-primary duration-200 transition-colors`}
               >
                 {item.title}
               </Link>
             </li>
           ))}
+          <Login />
         </ul>
       </div>
     </nav>

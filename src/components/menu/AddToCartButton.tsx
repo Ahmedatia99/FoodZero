@@ -18,13 +18,6 @@ const AddToCartButton = () => {
     },
     {
       id: 3,
-      img: "/assets/images/pizza.png",
-      title: "Margherita Pizza",
-      description: "Margherita Pizza is available",
-      price: 10.99,
-    },
-    {
-      id: 4,
       img: "/assets/images/hero-pizza.png",
       title: "Margherita Pizza",
       description: "Margherita Pizza is available",
