@@ -8,7 +8,7 @@ const Menu = () => {
       <MainSubject
         subject={"best ordering"}
         title="That Always Makes You Fall In Love"
-        className="flex flex-col justify-center items-center mx-auto gap-3"
+        className="flex flex-col justify-center items-center mx-auto gap-3 uppercase font-semibold"
       />
       <AddToCartButton />
     </main>
