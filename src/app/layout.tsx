@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato, Rufina } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -28,6 +29,8 @@ export default function RootLayout({
       <body className={`${rufina.variable} ${lato.variable} antialiased`}>
         <Header />
         {children}
+        <Footer />
+    
       </body>
     </html>
   );
