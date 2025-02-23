@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 
 export function Login() {
   return (
-    <Dialog className="h-50vh">
+    <Dialog>
       <DialogTrigger asChild>
         <Button
           variant="outline"

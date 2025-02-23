@@ -1,5 +1,5 @@
 import React from "react";
-import { Instagram, Facebook, Twitter } from "lucide-react";
+// import { Instagram, Facebook, Twitter } from "lucide-react";
 import Image from "next/image";
 
 export default function index() {

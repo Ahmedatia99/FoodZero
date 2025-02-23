@@ -2,9 +2,8 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { formatCurrency } from "@/lib/formatCurrency.ts";
+import { formatCurrency } from "@/lib/formatCurrency";
 import { Checkbox } from "@/components/ui/checkbox";
-
 import {
   Dialog,
   DialogContent,
@@ -15,9 +14,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-const CartDetails = ({ items , open }) => {
+interface Item {
+  img: string;
+  title: string;
+  description: string;
+  price: number;
+}
 
-
+const CartDetails = ({ items }: { items: Item }) => {
   const sizes = [
     {
       id: crypto.randomUUID(),
@@ -53,6 +57,7 @@ const CartDetails = ({ items , open }) => {
       price: 6,
     },
   ];
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -76,7 +81,7 @@ const CartDetails = ({ items , open }) => {
           <AnyExtra extra={extra} items={items} />
         </div>
         <DialogFooter>
-          <Button> save changes</Button>
+          <Button>Save Changes</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -85,7 +90,12 @@ const CartDetails = ({ items , open }) => {
 
 export default CartDetails;
 
-const PickSize = ({ sizes, items }) => {
+interface PickSizeProps {
+  sizes: { id: string; name: string; price: number }[];
+  items: Item;
+}
+
+const PickSize = ({ sizes, items }: PickSizeProps) => {
   return (
     <RadioGroup defaultValue="small">
       <Label htmlFor="pick-size" className="text-lg text-primary font-bold">
@@ -97,8 +107,8 @@ const PickSize = ({ sizes, items }) => {
           className="flex items-center space-x-2 border border-gray-100 rounded-md p-[18px]"
         >
           <div className="flex items-center space-x-2">
-            <RadioGroupItem value={size.id} id={size.id} />
-            <Label htmlFor={size.name} className="uppercase font-semibold">
+            <RadioGroupItem value={size.name} id={size.id} />
+            <Label htmlFor={size.id} className="uppercase font-semibold">
               {size.name}
               <span className="p-1 bg-primary text-white rounded-md font-bold text-xs ml-3">
                 {formatCurrency(size.price + items.price)}
@@ -110,7 +120,13 @@ const PickSize = ({ sizes, items }) => {
     </RadioGroup>
   );
 };
-const AnyExtra = ({ extra, items }) => {
+
+interface AnyExtraProps {
+  extra: { id: string; name: string; price: number }[];
+  items: Item;
+}
+
+const AnyExtra = ({ extra, items }: AnyExtraProps) => {
   return (
     <div className="grid gap-2">
       <Label htmlFor="pick-size" className="text-lg text-primary font-bold">
@@ -123,8 +139,8 @@ const AnyExtra = ({ extra, items }) => {
         >
           <Checkbox id={taste.id} />
           <label htmlFor={taste.id} className="uppercase font-semibold text-sm">
-            {taste.name}{" "}
-            <span className="p-1 bg-primary text-white rounded-md font-bold text-xs ml-3 ">
+            {taste.name}
+            <span className="p-1 bg-primary text-white rounded-md font-bold text-xs ml-3">
               {formatCurrency(taste.price + items.price)}
             </span>
           </label>

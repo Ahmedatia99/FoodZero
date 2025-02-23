@@ -1,7 +1,21 @@
 import React from "react";
 import MenuItem from "./MenuItem";
+
+// Define the type for a product
+interface Product {
+  id: number;
+  img: string;
+  title: string;
+  description: string;
+  price: number;
+}
+
+
+
+// Main component
 const AddToCartButton = () => {
-  const products = [
+  // Example products array
+  const products: Product[] = [
     {
       id: 1,
       img: "/assets/images/pizza.png",
@@ -24,6 +38,7 @@ const AddToCartButton = () => {
       price: 10.99,
     },
   ];
+
   return (
     <section>
       <div className="mt-20">

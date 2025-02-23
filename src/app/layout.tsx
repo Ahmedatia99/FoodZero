@@ -8,11 +8,13 @@ const lato = Lato({
   subsets: ["latin"],
   weight: ["100", "700", "400", "300"],
   preload: true,
+  variable: "--font-lato",
 });
 const rufina = Rufina({
   subsets: ["latin"],
   weight: ["700", "400"],
   preload: true,
+  variable: "--font-rufina",
 });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -30,7 +32,6 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
-    
       </body>
     </html>
   );
